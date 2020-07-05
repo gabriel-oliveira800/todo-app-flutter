@@ -22,6 +22,11 @@ class BottomBarItem extends StatelessWidget {
       unselectedLabelStyle: TextStyle(color: unselectedColor),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
+          title: Text('Users'),
+          icon: Icon(Icons.person_outline),
+          backgroundColor: backgroundColor,
+        ),
+        BottomNavigationBarItem(
           icon: Icon(Icons.toc),
           title: Text('Todos'),
           backgroundColor: backgroundColor,
@@ -29,11 +34,6 @@ class BottomBarItem extends StatelessWidget {
         BottomNavigationBarItem(
           title: Text('Posts'),
           icon: Icon(Icons.message),
-          backgroundColor: backgroundColor,
-        ),
-        BottomNavigationBarItem(
-          title: Text('Users'),
-          icon: Icon(Icons.person_outline),
           backgroundColor: backgroundColor,
         ),
         BottomNavigationBarItem(

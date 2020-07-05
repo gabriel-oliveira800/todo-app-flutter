@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:todoApp/models/albums.dart';
 import 'package:todoApp/repository/repository.dart';
 
+import '../details_albums_screen.dart';
+
 class BodyAlbums extends StatelessWidget {
   final Repository repository;
   final Future<List<AlbumModel>> future;
@@ -19,14 +21,24 @@ class BodyAlbums extends StatelessWidget {
         return ListView.builder(
           itemCount: snapshot.data.length,
           itemBuilder: (_, index) {
-            final AlbumModel model = snapshot.data[index];
+            final AlbumModel albumModel = snapshot.data[index];
 
             return ListTile(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => DetailsAlbum(
+                      album: albumModel,
+                      repository: repository,
+                    ),
+                  ),
+                );
+              },
               leading: CircleAvatar(
-                child: Text(model.id.toString()),
+                child: Text(albumModel.id.toString()),
               ),
-              title: Text(model.title),
+              title: Text(albumModel.title),
               trailing: Icon(Icons.arrow_forward),
             );
           },

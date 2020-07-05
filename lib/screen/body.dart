@@ -17,9 +17,9 @@ class Body extends StatelessWidget {
       controller: controller,
       physics: const NeverScrollableScrollPhysics(),
       children: <Widget>[
+        BodyUsers(future: repository.getUsers(), repository: repository),
         BodyTodos(future: repository.getTodos(), repository: repository),
         BodyPosts(future: repository.getPosts(), repository: repository),
-        BodyUsers(future: repository.getUsers(), repository: repository),
         BodyAlbums(future: repository.getAlbums(), repository: repository),
       ],
     );

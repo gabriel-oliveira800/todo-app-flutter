@@ -69,10 +69,12 @@ class Repository implements RepositoryI {
   }
 
   @override
-  Future<Photo> getAlbumsPhoto(int id) async {
-    Response res = await dio.instance.get('/albums/$id/photo');
+  Future<List<PhotoModel>> getAlbumsPhoto(int id) async {
+    Response res = await dio.instance.get('/albums/$id/photos');
     if (res.statusCode != 200) return null;
 
-    return Photo.fromJson(res.data);
+    return (res.data as List)
+        .map((photos) => PhotoModel.fromJson(photos))
+        .toList();
   }
 }

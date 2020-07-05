@@ -12,6 +12,6 @@ abstract class RepositoryI {
   Future<List<TodoModel>> getUsersTodos(int userId);
   Future<UserModel> getUserId(int id);
 
-  Future<Photo> getAlbumsPhoto(int id);
+  Future<List<PhotoModel>> getAlbumsPhoto(int id);
   Future<List<AlbumModel>> getAlbums();
 }
