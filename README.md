@@ -1,6 +1,8 @@
-# todoApp
+# Todo App Exemplo
 
-A new Flutter project.
+This is an example App developed with the flutter, basically the app 
+uses the - [Json Placeholder Api](https://jsonplaceholder.typicode.com/) to 
+list all post, user, albums etc.
 
 ## Getting Started
 
