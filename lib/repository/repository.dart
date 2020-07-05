@@ -19,8 +19,15 @@ class Repository implements RepositoryI {
   }
 
   @override
-  Future<List<PostModel>> getPosts() {
-    return null;
+  Future<List<PostModel>> getPosts() async {
+    Response res = await dio.instance.get('/posts');
+    if (res.statusCode != 200) return null;
+
+    print(res.data[0]);
+
+    return (res.data as List)
+        .map((posts) => PostModel.fromJson(posts))
+        .toList();
   }
 
   @override

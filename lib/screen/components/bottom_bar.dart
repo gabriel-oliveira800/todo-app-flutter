@@ -12,12 +12,12 @@ class BottomBarItem extends StatelessWidget {
       onTap: jumToPage,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
-          title: Text('Users'),
-        ),
-        BottomNavigationBarItem(
           icon: Icon(Icons.message),
           title: Text('Posts'),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person_outline),
+          title: Text('Users'),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.photo_album),
