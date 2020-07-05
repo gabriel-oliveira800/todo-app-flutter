@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todoApp/models/users.dart';
 import 'package:todoApp/repository/repository.dart';
 
-import '../../constants.dart';
+import 'body_posts.dart';
 import 'body_users.dart';
 
 class Body extends StatelessWidget {
@@ -16,6 +15,10 @@ class Body extends StatelessWidget {
       controller: controller,
       physics: const NeverScrollableScrollPhysics(),
       children: <Widget>[
+        BodyPosts(
+          repository: repository,
+          future: repository.getPosts(),
+        ),
         BodyUsers(future: repository.getUsers()),
         Container(color: Colors.blue),
         Container(color: Colors.yellow),

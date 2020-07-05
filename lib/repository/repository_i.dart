@@ -4,6 +4,9 @@ import 'package:todoApp/models/users.dart';
 
 abstract class RepositoryI {
   Future<List<PostModel>> getPosts();
+
   Future<List<UserModel>> getUsers();
+  Future<UserModel> getUserId(int id);
+
   Future<List<AlbumModel>> getAlbums(int id);
 }

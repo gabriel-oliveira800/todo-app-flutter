@@ -19,11 +19,17 @@ class Repository implements RepositoryI {
   }
 
   @override
+  Future<UserModel> getUserId(int id) async {
+    Response res = await dio.instance.get('/users/$id');
+    if (res.statusCode != 200) return null;
+
+    return UserModel.fromJson(res.data);
+  }
+
+  @override
   Future<List<PostModel>> getPosts() async {
     Response res = await dio.instance.get('/posts');
     if (res.statusCode != 200) return null;
-
-    print(res.data[0]);
 
     return (res.data as List)
         .map((posts) => PostModel.fromJson(posts))
