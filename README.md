@@ -6,8 +6,8 @@ list all post, user, albums etc.
 
 * ![Resul01](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/01.jpg)
 * ![Resul02](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/02.jpg)
-* ![Resul03](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/video_01.mp4)
-* ![Resul04](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/video_02.mp4)
+* ![Resul03](https://media.giphy.com/media/VdQ5d8jfbucADQgPoq/giphy.gif)
+* ![Resul04](https://media.giphy.com/media/dU5RvbJEzArARJqtWW/giphy.gif)
 
 ## Getting Started
 
