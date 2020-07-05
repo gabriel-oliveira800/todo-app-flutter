@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:todoApp/client/client_dio.dart';
+import 'package:todoApp/models/photo.dart';
+import 'package:todoApp/models/todos.dart';
 import 'package:todoApp/models/users.dart';
 import 'package:todoApp/models/posts.dart';
 import 'package:todoApp/models/albums.dart';
@@ -11,11 +13,23 @@ class Repository implements RepositoryI {
   Repository(this.dio);
 
   @override
-  Future<List<UserModel>> getUsers() async {
-    Response res = await dio.instance.get('/users');
+  Future<List<TodoModel>> getTodos() async {
+    Response res = await dio.instance.get('/todos');
     if (res.statusCode != 200) return null;
 
-    return (res.data as List).map((user) => UserModel.fromJson(user)).toList();
+    return (res.data as List)
+        .map((todos) => TodoModel.fromJson(todos))
+        .toList();
+  }
+
+  @override
+  Future<List<TodoModel>> getUsersTodos(int userId) async {
+    Response res = await dio.instance.get('/users/$userId/todos');
+    if (res.statusCode != 200) return null;
+
+    return (res.data as List)
+        .map((todos) => TodoModel.fromJson(todos))
+        .toList();
   }
 
   @override
@@ -24,6 +38,14 @@ class Repository implements RepositoryI {
     if (res.statusCode != 200) return null;
 
     return UserModel.fromJson(res.data);
+  }
+
+  @override
+  Future<List<UserModel>> getUsers() async {
+    Response res = await dio.instance.get('/users');
+    if (res.statusCode != 200) return null;
+
+    return (res.data as List).map((user) => UserModel.fromJson(user)).toList();
   }
 
   @override
@@ -37,7 +59,20 @@ class Repository implements RepositoryI {
   }
 
   @override
-  Future<List<AlbumModel>> getAlbums(int id) {
-    return null;
+  Future<List<AlbumModel>> getAlbums() async {
+    Response res = await dio.instance.get('/albums');
+    if (res.statusCode != 200) return null;
+
+    return (res.data as List)
+        .map((album) => AlbumModel.fromJson(album))
+        .toList();
+  }
+
+  @override
+  Future<Photo> getAlbumsPhoto(int id) async {
+    Response res = await dio.instance.get('/albums/$id/photo');
+    if (res.statusCode != 200) return null;
+
+    return Photo.fromJson(res.data);
   }
 }

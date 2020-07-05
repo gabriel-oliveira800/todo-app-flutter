@@ -7,21 +7,39 @@ class BottomBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color unselectedColor = Colors.grey;
+    final Color backgroundColor = Colors.white;
+    final Color selectedColor = Colors.deepPurple;
+
     return BottomNavigationBar(
       currentIndex: page,
       onTap: jumToPage,
+      showUnselectedLabels: true,
+      backgroundColor: Colors.white,
+      selectedItemColor: selectedColor,
+      unselectedItemColor: unselectedColor,
+      selectedLabelStyle: TextStyle(color: selectedColor),
+      unselectedLabelStyle: TextStyle(color: unselectedColor),
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.message),
+          icon: Icon(Icons.toc),
+          title: Text('Todos'),
+          backgroundColor: backgroundColor,
+        ),
+        BottomNavigationBarItem(
           title: Text('Posts'),
+          icon: Icon(Icons.message),
+          backgroundColor: backgroundColor,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.person_outline),
           title: Text('Users'),
+          icon: Icon(Icons.person_outline),
+          backgroundColor: backgroundColor,
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.photo_album),
           title: Text('Albums'),
+          icon: Icon(Icons.photo_album),
+          backgroundColor: backgroundColor,
         ),
       ],
     );

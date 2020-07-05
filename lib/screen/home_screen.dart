@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:todoApp/client/client_dio.dart';
 import 'package:todoApp/repository/repository.dart';
 
-import 'components/body.dart';
+import 'body.dart';
 import 'components/bottom_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,6 +14,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final Repository repository = Repository(CustomDio(Dio()));
   final PageController controller = PageController(initialPage: 0);
+
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -34,8 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
         repository: repository,
       ),
       bottomNavigationBar: BottomBarItem(
-        page: controller.initialPage,
+        page: currentPage,
         jumToPage: (page) {
+          setState(() {
+            currentPage = page;
+          });
           controller.jumpToPage(page);
         },
       ),

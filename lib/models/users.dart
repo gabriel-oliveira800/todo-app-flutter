@@ -1,3 +1,5 @@
+import 'package:todoApp/models/todos.dart';
+
 import 'address.dart';
 import 'company.dart';
 
@@ -10,6 +12,7 @@ class UserModel {
   String phone;
   String website;
   Company company;
+  List<TodoModel> todos;
 
   UserModel({
     this.id,
@@ -20,6 +23,7 @@ class UserModel {
     this.phone,
     this.website,
     this.company,
+    this.todos,
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
@@ -50,5 +54,9 @@ class UserModel {
       data['company'] = this.company.toJson();
     }
     return data;
+  }
+
+  void setTodos(List<TodoModel> todos) {
+    this.todos = todos;
   }
 }
