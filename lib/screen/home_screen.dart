@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:todoApp/models/users.dart';
+import 'package:todoApp/repository/repository.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final Repository repository = Repository();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Todo App', style: Theme.of(context).textTheme.headline5),
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<List<UserModel>>(
+        future: repository.getUsers(),
         builder: (_, snapshot) {
           if (!snapshot.hasData)
             return Center(child: CircularProgressIndicator());
