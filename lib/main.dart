@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'screen/home_screen.dart';
+
 void main() => runApp(TodoApp());
 
 class TodoApp extends StatelessWidget {
@@ -8,9 +10,12 @@ class TodoApp extends StatelessWidget {
     return MaterialApp(
       title: 'Todo App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
+        accentColor: Colors.deepPurpleAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      home: HomeScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
