@@ -1,31 +1,42 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:todoApp/models/users.dart';
+import 'package:todoApp/client/client_dio.dart';
 import 'package:todoApp/repository/repository.dart';
 
-class HomeScreen extends StatefulWidget {
-  final Repository repository;
-  const HomeScreen({Key key, @required this.repository}) : super(key: key);
+import 'components/body.dart';
+import 'components/bottom_bar.dart';
 
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Repository get repository => widget.repository;
+  final Repository repository = Repository(CustomDio(Dio()));
+  final PageController controller = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Todo App', style: Theme.of(context).textTheme.headline5),
+        title: Text(
+          'Todo Exemplo',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        centerTitle: true,
+        leading: Icon(Icons.account_balance, size: 32),
       ),
-      body: FutureBuilder<List<UserModel>>(
-        future: repository.getUsers(),
-        builder: (_, snapshot) {
-          if (!snapshot.hasData)
-            return Center(child: CircularProgressIndicator());
-
-          return ListTile(title: Text('Testando'));
+      body: Body(
+        controller: controller,
+        repository: repository,
+      ),
+      bottomNavigationBar: BottomBarItem(
+        page: controller.initialPage,
+        jumToPage: (page) {
+          controller.jumpToPage(page);
         },
       ),
     );
