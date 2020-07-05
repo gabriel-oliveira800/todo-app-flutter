@@ -15,4 +15,9 @@ class Geo {
     data['lng'] = this.lng;
     return data;
   }
+
+  @override
+  String toString() {
+    return 'Lat: $lat Lng: $lng';
+  }
 }

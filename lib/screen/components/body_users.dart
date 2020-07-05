@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoApp/models/users.dart';
 
 import '../../constants.dart';
+import '../details_user_screen.dart';
 import 'user_item.dart';
 
 class BodyUsers extends StatelessWidget {
@@ -23,10 +24,23 @@ class BodyUsers extends StatelessWidget {
           itemBuilder: (_, index) {
             UserModel model = snapshot.data[index];
 
+            String picture = index % 2 == 0 ? urlModel : urlModelOne;
+
             return Card(
               child: UserItem(
                 model: model,
-                picture: index % 2 == 0 ? urlModel : urlModelOne,
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => DetailsUser(
+                        model: model,
+                        picture: picture,
+                      ),
+                    ),
+                  );
+                },
+                picture: picture,
               ),
             );
           },
