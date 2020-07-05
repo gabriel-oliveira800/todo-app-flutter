@@ -3,12 +3,15 @@ import 'package:todoApp/models/users.dart';
 import 'package:todoApp/repository/repository.dart';
 
 class HomeScreen extends StatefulWidget {
+  final Repository repository;
+  const HomeScreen({Key key, @required this.repository}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final Repository repository = Repository();
+  Repository get repository => widget.repository;
 
   @override
   Widget build(BuildContext context) {

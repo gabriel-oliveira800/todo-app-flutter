@@ -1,5 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:todoApp/repository/repository.dart';
 
+import 'client/client_dio.dart';
 import 'screen/home_screen.dart';
 
 void main() => runApp(TodoApp());
@@ -14,7 +17,7 @@ class TodoApp extends StatelessWidget {
         accentColor: Colors.deepPurpleAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomeScreen(),
+      home: HomeScreen(repository: Repository(CustomDio(Dio()))),
       debugShowCheckedModeBanner: false,
     );
   }
