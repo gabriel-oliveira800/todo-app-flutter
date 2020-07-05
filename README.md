@@ -4,6 +4,10 @@ This is an example App developed with the flutter, basically the app
 uses the - [Json Placeholder Api](https://jsonplaceholder.typicode.com/) to 
 list all post, user, albums etc.
 
+* ![Resul01](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/01.jpg)
+* ![Resul02](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/video_01.mp4)
+* ![Resul02](https://github.com/gabrielscorehero/todo-app-flutter/blob/master/screenshot/video_02.mp4)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
